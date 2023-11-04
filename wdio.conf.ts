@@ -53,7 +53,7 @@ export const config: Options.Testrunner = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -105,7 +105,7 @@ export const config: Options.Testrunner = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 2,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -237,9 +237,10 @@ export const config: Options.Testrunner = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: async function(test:any, context:any, { error, result, duration, passed, retries }) {
         if (!passed) {
-            await browser.takeScreenshot();
+            const screenshotPath = `reports/html-reports/screenshots/${test.title}.png`;
+            await browser.saveScreenshot(screenshotPath);
         }
     },
 
