@@ -12,4 +12,9 @@ export default class Page {
     public open (path: string) {
         return browser.url(`https://the-internet.herokuapp.com/${path}`)
     }
+
+    public open_test_site(path:string){
+        return browser.url(`https://the-internet.herokuapp.com/${path}`)
+    }
+
 }
