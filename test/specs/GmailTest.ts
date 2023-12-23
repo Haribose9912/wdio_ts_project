@@ -38,6 +38,7 @@ describe('testing demo site', () => {
             console.log(`Checkbox ${i + 1} is enabled: ${isEnabled}`);
             const isSelected = await ch[i].isSelected();
             console.log(`Checkbox ${i + 1} is selected: ${isSelected}`);
+            (await gp.poweredby)
 
         }
     })
